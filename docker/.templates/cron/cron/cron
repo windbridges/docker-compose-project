@@ -1,0 +1,2 @@
+# Specify time in UTC
+0 0,8,16 * * * cd /data && bash -c "/usr/local/bin/php bin/console app:command --no-debug" > /proc/1/fd/1 2>/proc/1/fd/2

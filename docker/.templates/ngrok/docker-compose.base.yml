@@ -1,0 +1,17 @@
+services:
+  ngrok:
+    image: ngrok/ngrok:latest
+    hostname: ${COMPOSE_PROJECT_NAME}-ngrok
+    container_name: ${COMPOSE_PROJECT_NAME}-ngrok
+    restart: no
+    command:
+      - "http"
+      - "nginx.internal:80"
+      - "--authtoken"
+      - "${NGROK_AUTH_TOKEN}"
+      - "--domain"
+      - "${NGROK_DOMAIN}"
+    networks:
+      internal: {}
+    ports:
+      - 4040:4040

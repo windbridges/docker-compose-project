@@ -1,0 +1,14 @@
+services:
+  nginx:
+    build:
+      context: nginx
+      target: dev
+    hostname: ${COMPOSE_PROJECT_NAME}-nginx
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
+    networks:
+      internal:
+        aliases:
+          - nginx.internal
+
+networks:
+  internal: {}

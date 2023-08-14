@@ -1,0 +1,7 @@
+services:
+
+  rabbitmq:
+    logging:
+      options:
+        max-file: 3
+        max-size: 100M

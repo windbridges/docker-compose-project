@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:7
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
+    hostname: ${COMPOSE_PROJECT_NAME}-redis
+    networks:
+      internal:
+        aliases:
+          - redis.internal
+    volumes:
+      - redis:/data
+    restart: "no"
+    ports:
+      - 6379:6379
+
+networks:
+  internal: {}
+
+volumes:
+  redis:
+    name: ${COMPOSE_PROJECT_NAME}-redis

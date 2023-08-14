@@ -1,0 +1,15 @@
+services:
+  php:
+    build:
+      context: php
+      target: dev
+    hostname: ${COMPOSE_PROJECT_NAME}-php
+    container_name: ${COMPOSE_PROJECT_NAME}-php
+    user: user
+    networks:
+      internal:
+        aliases:
+          - php.internal
+
+networks:
+  internal: {}

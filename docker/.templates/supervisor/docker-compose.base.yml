@@ -1,0 +1,19 @@
+services:
+
+  supervisor-php:
+    hostname: ${COMPOSE_PROJECT_NAME}-supervisor-php
+    container_name: ${COMPOSE_PROJECT_NAME}-supervisor-php
+    restart: unless-stopped
+    user: user
+    command: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+    volumes:
+      - ./..:/data
+    networks:
+      internal:
+        aliases:
+          - supervisor-php.internal
+    environment:
+      WORKERS: ${WORKERS}
+
+networks:
+  internal: {}

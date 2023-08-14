@@ -1,0 +1,19 @@
+services:
+  cron:
+    build:
+      context: php
+      target: prod
+    hostname: ${COMPOSE_PROJECT_NAME}-cron
+    container_name: ${COMPOSE_PROJECT_NAME}-cron
+    restart: unless-stopped
+    command: cron -f
+    volumes:
+      - ./..:/data
+    logging:
+      options:
+        max-file: 3
+        max-size: 100M
+    networks:
+      internal:
+        aliases:
+          - php.internal

@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-15}-alpine
+    hostname: ${COMPOSE_PROJECT_NAME}-postgres
+    container_name: ${COMPOSE_PROJECT_NAME}-postgres
+    environment:
+      POSTGRES_DB: ${COMPOSE_PROJECT_NAME}
+      POSTGRES_USER: ${COMPOSE_PROJECT_NAME}
+      POSTGRES_PASSWORD: Q7lAF60WSCYyI1RL
+    networks:
+      internal:
+        aliases:
+          - postgres.internal
+    volumes:
+      - postgres:/var/lib/postgresql/data:rw
+
+networks:
+  internal: {}
+
+volumes:
+  postgres:
+    name: ${COMPOSE_PROJECT_NAME}-postgres

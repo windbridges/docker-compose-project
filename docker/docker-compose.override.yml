@@ -1,0 +1,4 @@
+services:
+  php:
+    extra_hosts:
+      - "host.docker.internal:172.27.80.1"
